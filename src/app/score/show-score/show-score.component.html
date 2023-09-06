@@ -1,0 +1,70 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-secondary float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Show Subject Module
+</button>
+<button type="button" class="btn btn-secondary float-end me-3" (click)="modalAdd()" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+  Add Score
+</button>
+<table class="table table-striped">
+  <thead>
+    <th>Id</th>
+    <th>Subject Module ID</th>
+    <th>Status</th>
+    <th>Score</th>
+
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of scoreList$ | async">
+      <td>{{item.id}}</td>
+       <!-- <td>{{subjectModulesMap.get(item.subjectModuleId)}}</td> -->
+      <td>{{item.subjectModuleId}}</td>
+      <td>{{item.status}}</td>
+      <td>{{item.moduleScore}}</td>
+
+
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Modal  for subject -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Subject Modules</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p *ngFor="let type of subjectModulesList$ | async">
+          {{type.id}} -  {{type.moduleName}}
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <app-add-edit-score></app-add-edit-score>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,9 @@
+<form>
+  <div class="mb-3">
+    <label for="subjectModuleId" class="form-label">Subject Module</label>
+   <select class="form-control" name="subjectModuleId" id="subjectModuleId">
+    [ngModel]="subjectModuleId" *ngIf="score.id==0">
+    <option *ngFor="let type of subjectModulesList$ | async" [value]="type.id">{{type.moduleName}}</option>
+   </select>
+  </div>
+</form>
